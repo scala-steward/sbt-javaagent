@@ -7,7 +7,7 @@ val packagerVersion = "1.11.7"
 val packager19xVersion = "1.9.16"
 
 val scala212 = "2.12.21"
-val scala3 = "3.7.4"
+val scala3 = "3.8.1"
 
 addSbtPlugin(
   "com.github.sbt" % "sbt-native-packager" % packagerVersion % "provided"
@@ -45,7 +45,7 @@ lazy val `sbt-javaagent` = (project.in(file(".")))
     crossScalaVersions := Seq(scala212, scala3),
     scalacOptions ++= {
       scalaBinaryVersion.value match {
-        case "2.12" => Seq("-Xsource:3")
+        case "2.12" => Seq("-Xsource:3", "-release:8")
         case _      => Nil
       }
     },
@@ -62,7 +62,7 @@ lazy val `sbt-javaagent` = (project.in(file(".")))
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
         case "2.12" => "1.11.6"
-        case _      => "2.0.0-RC6"
+        case _      => "2.0.0-RC9"
       }
     },
     scriptedSbt := {
