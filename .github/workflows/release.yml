@@ -22,10 +22,10 @@ jobs:
         id: coursier-cache
         uses: coursier/cache-action@v8
 
-      - name: Install Adoptium Temurin OpenJDK
-        uses: coursier/setup-action@v2
+      - uses: actions/setup-java@v5
         with:
-          jvm: adoptium:8
+          distribution: temurin
+          java-version: 17
 
       - name: Install sbt
         uses: sbt/setup-sbt@v1
